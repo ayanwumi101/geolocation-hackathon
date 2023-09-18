@@ -2,7 +2,15 @@ import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { useFonts, Prompt_400Regular } from "@expo-google-fonts/prompt";
 
-const SecondPage = () => {
+const SecondPage = ({navigation}) => {
+    const goToNextPage = () => {
+        navigation.navigate('ThirdPage');
+    };
+
+    const goToPreviousPage = () => {
+        navigation.navigate('FirstPage');
+    };
+
   return (
         <View>
             <View style={styles.container}>
@@ -24,12 +32,12 @@ const SecondPage = () => {
             </View>
 
             <View style={styles.buttonsContainer}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={goToPreviousPage}>
                   <View style={styles.outlineButtonContainer}>
                       <Text style={styles.outlineButtonText}>RETURN</Text>
                   </View>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={goToNextPage}>
                   <View style={styles.buttonContainer}>
                       <Text style={styles.buttonText}>NEXT</Text>
                   </View>
@@ -63,14 +71,13 @@ const styles = StyleSheet.create({
     },
     onboardingHeadingText: {
         fontSize: 23,
-        fontWeight: 'bold',
         marginBottom: 10,
         color: '#19686A',
         fontFamily: 'Prompt_400Regular',
     },
     text: {
         fontSize: 16,
-        marginBottom: 10,
+        marginBottom: 5,
         lineHeight: 25,
         fontFamily: 'Prompt_400Regular',
     },
@@ -103,14 +110,12 @@ const styles = StyleSheet.create({
     },
     skipButtonText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: '#19686A',
         fontFamily: 'Prompt_400Regular',
     },
     buttonText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: '#fff',
         fontFamily: 'Prompt_400Regular',
@@ -127,7 +132,6 @@ const styles = StyleSheet.create({
     },
     outlineButtonText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: '#19686A',
         fontFamily: 'Prompt_400Regular',
@@ -135,19 +139,16 @@ const styles = StyleSheet.create({
     signUpTexts: {
         textAlign: 'center',
         fontSize: 18,
-        fontWeight: 'bold',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: 5,
     },
     hurry: {
-        fontWeight: 'bold',
         fontFamily: 'Prompt_400Regular',
     },
     signUp: {
         color: '#19686A',
-        fontWeight: 'bold',
         fontFamily: 'Prompt_400Regular',
     },
 })

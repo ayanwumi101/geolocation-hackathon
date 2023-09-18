@@ -1,8 +1,14 @@
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { useFonts, Prompt_400Regular } from "@expo-google-fonts/prompt";
+import AppLoading from 'expo-app-loading'
 
-const FirstPage = () => {
+
+const FirstPage = ({navigation}) => {
+
+  const goToNextPage = () => {
+    navigation.navigate('SecondPage');
+  };
 
   return (
     <View>
@@ -23,7 +29,7 @@ const FirstPage = () => {
             </Text>
         </View>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToNextPage}>
             <View style={styles.buttonContainer}>
                 <Text style={styles.buttonText}>Continue</Text>
             </View>
@@ -44,7 +50,7 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: 'auto',
-        marginBottom: 25,
+        marginBottom: 15,
         position: 'relative',
     }, 
     image: {
@@ -56,8 +62,7 @@ const styles = StyleSheet.create({
     },
     onboardingHeadingText: {
         fontSize: 23,
-        fontWeight: 'bold',
-        marginBottom: 18,
+        marginBottom: 10,
         color: '#19686A',
         fontFamily: 'Prompt_400Regular',
     },
@@ -90,14 +95,12 @@ const styles = StyleSheet.create({
     },
     skipButtonText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: '#19686A',
         fontFamily: 'Prompt_400Regular',
     },
     buttonText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: '#fff',
         fontFamily: 'Prompt_400Regular',
@@ -105,19 +108,16 @@ const styles = StyleSheet.create({
     signUpTexts: {
         textAlign: 'center',
         fontSize: 18,
-        fontWeight: 'bold',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         gap: 5,
     },
     hurry: {
-        fontWeight: 'bold',
         fontFamily: 'Prompt_400Regular',
     },
     signUp: {
         color: '#19686A',
-        fontWeight: 'bold',
         fontFamily: 'Prompt_400Regular',
     },
 })
