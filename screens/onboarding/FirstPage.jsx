@@ -3,7 +3,8 @@ import { View, Text, Image, TouchableOpacity, ImageBackground, ScrollView } from
 import styles from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts, Prompt_400Regular } from "@expo-google-fonts/prompt";
-import { SolidButton } from '../../components/button';
+import { SolidButton, TextButton } from '../../components/button';
+import { TextBold, TextMedium, TextRegular } from '../../components/text';
 
 const FirstPage = ({ navigation }) => {
 
@@ -18,11 +19,11 @@ const FirstPage = ({ navigation }) => {
             </ImageBackground>
             <ScrollView contentContainerStyle={styles.contentContainer}>
                 <View style={styles.textContainer}>
-                    <Text style={styles.onboardingHeadingText}>Contact the Nearest Emergency station. </Text>
-                    <Text style={styles.text}>
+                    <TextMedium style={styles.onboardingHeadingText}>Contact the Nearest Emergency station. </TextMedium>
+                    <TextRegular style={styles.text}>
                         Welcome to Q-call where you effortlessly connect with the nearest emergency station.
                         With just a few taps, you can ensure swift and immediate assistance whenever you need it.
-                    </Text>
+                    </TextRegular>
                 </View>
                 <SolidButton containerProps={{
                     style: styles.buttonsContainer,
@@ -32,9 +33,7 @@ const FirstPage = ({ navigation }) => {
 
                 <View style={styles.signUpTexts}>
                     <Text style={styles.hurry}>Not in a hurry?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.signUp}>SIGN UP</Text>
-                    </TouchableOpacity>
+                    <TextButton>SIGN UP</TextButton>
                 </View>
             </ScrollView>
         </View>

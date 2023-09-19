@@ -3,7 +3,8 @@ import { View, Text, Image, TouchableOpacity, ImageBackground, ScrollView, Style
 import styles from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts, Prompt_400Regular } from "@expo-google-fonts/prompt";
-import { OutlineButton, SolidButton } from '../../components/button';
+import { OutlineButton, SolidButton, TextButton } from '../../components/button';
+import { TextMedium, TextRegular } from '../../components/text';
 
 const ThirdPage = ({ navigation }) => {
 
@@ -18,10 +19,10 @@ const ThirdPage = ({ navigation }) => {
             </ImageBackground>
             <ScrollView contentContainerStyle={styles.contentContainer}>
                 <View style={styles.textContainer}>
-                    <Text style={styles.onboardingHeadingText}>Easily find information on all governmental agencies.</Text>
-                    <Text style={styles.text}>
+                    <TextMedium style={styles.onboardingHeadingText}>Easily find information on all governmental agencies.</TextMedium>
+                    <TextRegular style={styles.text}>
                         Effortlessly Access Comprehensive Government Agency Information! Our platform provides a convenient and user-friendly way to discover details about all governmental agencies.
-                    </Text>
+                    </TextRegular>
                 </View>
 
                 <View style={StyleSheet.compose(styles.buttonsRow, styles.buttonsContainer)}>
@@ -35,9 +36,7 @@ const ThirdPage = ({ navigation }) => {
 
                 <View style={styles.signUpTexts}>
                     <Text style={styles.hurry}>Not in a hurry?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.signUp}>SIGN UP</Text>
-                    </TouchableOpacity>
+                    <TextButton>SIGN UP</TextButton>
                 </View>
             </ScrollView>
         </View>

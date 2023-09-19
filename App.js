@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import { Prompt_400Regular } from "@expo-google-fonts/prompt";
+import { Prompt_400Regular, Prompt_500Medium, Prompt_700Bold } from "@expo-google-fonts/prompt";
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -15,6 +15,8 @@ export default function App() {
 
   let [fontsLoaded] = useFonts({
     Prompt_400Regular,
+    Prompt_500Medium,
+    Prompt_700Bold,
   });
 
   if (!fontsLoaded) {

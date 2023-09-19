@@ -30,16 +30,14 @@ const styles = StyleSheet.create({
     onboardingHeadingText: {
         fontSize: 23,
         lineHeight: 32,
-        fontWeight: 'bold',
         marginBottom: 18,
         color: '#19686A',
-        fontFamily: 'Prompt_400Regular',
     },
     text: {
         fontSize: 16,
         marginBottom: 10,
         lineHeight: 25,
-        fontFamily: 'Prompt_400Regular',
+        textAlign: 'justify',
     },
     buttonsRow: {
         flexDirection: 'row',
