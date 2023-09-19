@@ -1,9 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { Prompt_400Regular } from "@expo-google-fonts/prompt";
-import FirstPage from './screens/onboarding/FirstPage';
-import SecondPage from './screens/onboarding/SecondPage';
-import ThirdPage from './screens/onboarding/ThirdPage';
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -22,6 +19,7 @@ export default function App() {
   }
 
   return (
+<<<<<<< HEAD
       <NavigationContainer>
         <Stack.Navigator initialRouteName='onboarding-1'>
           <Stack.Group screenOptions={{headerShown: false}}>
@@ -40,8 +38,21 @@ export default function App() {
           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
+=======
+    <NavigationContainer>
+      <Stack.Navigator 
+        initialRouteName="Onboarding"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="Onboarding" component={OnboardingNavigator} />
+      </Stack.Navigator>
+    </NavigationContainer>
+>>>>>>> f8de5880440d9d70c5ab0f1dfbeebdfdcc56b983
   );
 }
+
 
 const styles = StyleSheet.create({
   loadingContainer: {
