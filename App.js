@@ -19,7 +19,6 @@ export default function App() {
   }
 
   return (
-<<<<<<< HEAD
       <NavigationContainer>
         <Stack.Navigator initialRouteName='onboarding-1'>
           <Stack.Group screenOptions={{headerShown: false}}>
@@ -38,18 +37,6 @@ export default function App() {
           </Stack.Group>
         </Stack.Navigator>
       </NavigationContainer>
-=======
-    <NavigationContainer>
-      <Stack.Navigator 
-        initialRouteName="Onboarding"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="Onboarding" component={OnboardingNavigator} />
-      </Stack.Navigator>
-    </NavigationContainer>
->>>>>>> f8de5880440d9d70c5ab0f1dfbeebdfdcc56b983
   );
 }
 
