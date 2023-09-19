@@ -4,6 +4,9 @@ import { Prompt_400Regular } from "@expo-google-fonts/prompt";
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import FirstPage from './screens/onboarding/FirstPage';
+import ThirdPage from './screens/onboarding/ThirdPage';
+import SecondPage from './screens/onboarding/SecondPage';
 
 
 const Stack = createNativeStackNavigator()
