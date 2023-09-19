@@ -5,6 +5,11 @@ import FirstPage from './screens/onboarding/FirstPage';
 import SecondPage from './screens/onboarding/SecondPage';
 import ThirdPage from './screens/onboarding/ThirdPage';
 import { useFonts } from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
 
@@ -17,13 +22,24 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
-        <FirstPage />
-        {/* <SecondPage />
-        <ThirdPage /> */}
-      </SafeAreaView>
-    </View>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='onboarding-1'>
+          <Stack.Group screenOptions={{headerShown: false}}>
+            <Stack.Screen
+              name='onboarding-1'
+              component={FirstPage}
+             />
+             <Stack.Screen
+              name='onboarding-2'
+              component={SecondPage}
+             />
+             <Stack.Screen
+              name='onboarding-3'
+              component={ThirdPage}
+             />
+          </Stack.Group>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
