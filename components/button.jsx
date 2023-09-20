@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 14,
-        fontWeight: 'bold',
         textAlign: 'center',
         color: 'white',
         fontFamily: 'Prompt_400Regular',
@@ -56,14 +55,14 @@ const styles = StyleSheet.create({
     },
     outlineButtonText: {
         fontSize: 14,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         textAlign: 'center',
         color: '#19686A',
         fontFamily: 'Prompt_400Regular',
     },
     textButtonText: {
         fontSize: 14,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         textAlign: 'center',
         color: '#19686A',
         fontFamily: 'Prompt_700Bold',

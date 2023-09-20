@@ -48,18 +48,11 @@ const styles = StyleSheet.create({
     },
     skipButtonText: {
         fontSize: 14,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         textAlign: 'center',
         color: '#19686A',
         fontFamily: 'Prompt_400Regular',
     },
-    // buttonText: {
-    //     fontSize: 14,
-    //     fontWeight: 'bold',
-    //     textAlign: 'center',
-    //     color: '#fff',
-    //     fontFamily: 'Prompt_400Regular',
-    // },
     signUpTexts: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -68,12 +61,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     hurry: {
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         fontFamily: 'Prompt_400Regular',
     },
     signUp: {
         color: '#19686A',
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         fontFamily: 'Prompt_400Regular',
     },
 })

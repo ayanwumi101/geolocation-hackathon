@@ -31,7 +31,9 @@ const ThirdPage = ({ navigation }) => {
                             onPress: () => navigation.goBack(),
                         }}
                     >RETURN</OutlineButton>
-                    <SolidButton>GET STARTED</SolidButton>
+                    <SolidButton containerProps={{
+                        onPress: () => navigation.navigate('HomeTabNavigator')
+                    }}>GET STARTED</SolidButton>
                 </View>
 
                 <View style={styles.signUpTexts}>
