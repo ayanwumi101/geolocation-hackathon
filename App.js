@@ -14,7 +14,7 @@ import ResourcesScreen from './screens/resources/Index'
 import MoreScreen from './screens/more/Index'
 import { Home3, Notification, Element3, Information, ArrowCircleLeft2, ArrowLeft2 } from 'iconsax-react-native'
 import Signup from './screens/more/screens/signup';
-import navigation from './screens/more/navigation';
+import NotificationDetails from './screens/notifications/screens/notificationDetails';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -83,14 +83,32 @@ export default function App() {
                   // ),
                 }}
               />
-              {/* <Stack.Screen
-                name='onboarding-2'
-                component={SecondPage}
-              />
+            </Stack.Navigator>
+          )}
+        </Stack.Screen>
+        <Stack.Screen
+          name='notification-details'
+        >
+          {() => (
+            <Stack.Navigator
+              initialRouteName='details'
+              screenOptions={{ headerShown: true }}
+            >
               <Stack.Screen
-                name='onboarding-3'
-                component={ThirdPage}
-              /> */}
+                name='details'
+                component={NotificationDetails}
+                screenOptions={{ headerShown: true }}
+                options={{
+                  title: 'Notification Details',
+                  headerTitleStyle: {
+                    fontFamily: 'Prompt_700Bold',
+                    // fontSize: 20,
+                  },
+                  // headerLeft: () => (
+                  //   <ArrowLeft2 color='#19686A' size={35} onPress={() => navigation.goBack()}  />
+                  // ),
+                }}
+              />
             </Stack.Navigator>
           )}
         </Stack.Screen>
@@ -105,8 +123,8 @@ export default function App() {
                 tabBarActiveTintColor: '#19686A',
                 tabBarStyle: {
                   paddingTop: 5,
-                  paddingBottom: 8,
-                  height: 75,
+                  paddingBottom: 5,
+                  height: 70,
                   borderTopStyle: 'solid',
                   borderTopWidth: 1,
                   borderColor: 'lightgray'
