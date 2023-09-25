@@ -67,16 +67,17 @@ export default Index
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 48,
+    paddingTop: 48,
+    backgroundColor: 'white',
   },
   more: {
     fontSize: 25,
     fontFamily: 'Prompt_500Medium',
-    color: 'black',
+    color: '#484649',
     marginBottom: 10,
   },
   moreContainer: {
-    borderBottomWidth: 1.5,
+    borderBottomWidth: 1,
     borderColor: '#19686A',
     bordeerBottomStyle: 'solid',
     paddingHorizontal: 25,

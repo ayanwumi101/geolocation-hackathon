@@ -15,7 +15,7 @@ const Index = ({navigation}) => {
             </View>
             <View style={styles.description}>
               <Text style={styles.alertTitle}>Fire Alert</Text>
-              <Text style={styles.alertDescription}>Fire alert incident report at crescent street</Text>
+              <Text style={styles.alertDescription}>Fire alert incident report at crescent ...</Text>
             </View>
           </View>
 
@@ -32,7 +32,7 @@ const Index = ({navigation}) => {
     <View style={styles.container}>
       <View style={styles.moreContainer}>
         <Text style={styles.more}>Notifications</Text>
-        <MaterialIcons name='settings' color='black' size={30}  />
+        <MaterialIcons name='settings' color='#484649' size={27}  />
       </View>
 
       <View style={styles.notificationsContainer}>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   more: {
     fontSize: 25,
     fontFamily: 'Prompt_500Medium',
-    color: 'black',
+    color: '#484649',
     marginBottom: 10,
   },
   moreContainer: {
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 30,
-    paddingHorizontal: 30,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: '#E6E1E5',
     borderBottomStyle: 'solid',
@@ -98,11 +98,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 20,
+    gap: 15,
   },
   iconContainer: {
-    width: 55,
-    height: 55,
+    width: 50,
+    height: 50,
     borderRadius: 50,
     backgroundColor: '#ACE9EB',
     display: 'flex',
@@ -126,6 +126,6 @@ const styles = StyleSheet.create({
   time: {
     fontFamily: 'Prompt_400Regular',
     color: '#787579',
-    fontSize: 16,
+    fontSize: 15,
   }
 })
