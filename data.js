@@ -11,46 +11,51 @@ export const data = [
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: "fire",
   },
   {
     id: 2,
-    title: "Fire Outbreak",
+    title: "Feedback Request",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: "feedback",
   },
   {
     id: 3,
-    title: "Fire Outbreak",
+    title: "Feedback Request",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: "feedback",
   },
   {
     id: 4,
-    title: "Fire Outbreak",
+    title: "Crime Alert",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: "crime",
   },
   {
     id: 5,
-    title: "Fire Outbreak",
+    title: "Car Accident",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: "accident",
   },
   {
     id: 6,
@@ -61,56 +66,62 @@ export const data = [
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: "fire",
   },
   {
     id: 7,
-    title: "Fire Outbreak",
+    title: "Car Accident",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: 'accident'
   },
   {
     id: 8,
-    title: "Fire Outbreak",
+    title: "Crime Alert",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: "crime",
   },
   {
     id: 9,
-    title: "Fire Outbreak",
+    title: "Feedback Request",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: 'feedback'
   },
   {
     id: 10,
-    title: "Fire Outbreak",
+    title: "Car Accident",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: 'accident'
   },
   {
     id: 11,
-    title: "Fire Outbreak",
+    title: "Crime Alert",
     time: "10:15 am",
     date: "August 20th, 2015.",
     address: "Lagbaja street, Agbowo UI, Ibadan.",
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: 'crime'
   },
   {
     id: 12,
@@ -121,5 +132,6 @@ export const data = [
     description:
       "A fire outbreak has been reported at the above address. Please send help as soon as possible.",
     images: [image1, image2],
+    label: 'fire'
   },
 ];

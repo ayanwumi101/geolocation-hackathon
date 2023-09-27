@@ -140,7 +140,7 @@ export default function App() {
                 component={HomeScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Home3 name="home" color={color} size={size} />
+                    <Home3 name="home" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />
@@ -149,7 +149,7 @@ export default function App() {
                 component={ResourcesScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Information name="information" color={color} size={size} />
+                    <Information name="information" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />
@@ -158,7 +158,7 @@ export default function App() {
                 component={NotificationScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Notification name="notifications" color={color} size={size} />
+                    <Notification name="notifications" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />
@@ -167,7 +167,7 @@ export default function App() {
                 component={MoreScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Element3 name="more" color={color} size={size} />
+                    <Element3 name="more" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />

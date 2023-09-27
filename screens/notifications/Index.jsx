@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native'
-import { MaterialIcons } from '@expo/vector-icons'
+import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { data } from '../../data'
 
 const Index = ({navigation}) => {
@@ -10,12 +10,31 @@ const Index = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('notification-details', { notification: item })}>
         <View style={styles.notificationContainer}>
           <View style={styles.firstColumn}>
-            <View style={styles.iconContainer}>
-              <MaterialIcons name='feedback' size={25} color='#19686A' />
+            <View 
+              style={[
+                styles.iconContainer, 
+                {
+                  backgroundColor: item.label === 'feedback' 
+                  ? '#ACE9EB' : item.label === 'fire' ? '#EED9C6'
+                  : item.label === 'accident' ? '#F9D8D6'
+                  : '#CFE6F2'
+                }
+              ]}
+            >
+              {
+                item.label === 'feedback' ?
+                <MaterialIcons name='feedback' size={25} color='#19686A'  />
+                : item.label === 'fire' ?
+                <MaterialIcons name='local-fire-department' color='#C77E3C' size={25} />
+                : item.label === 'accident' ?
+                <MaterialIcons name='taxi-alert' color='#C7443C' size={25} /> 
+                :
+                <MaterialCommunityIcons name='pistol' color='#3C95C7' size={25} />
+              }
             </View>
             <View style={styles.description}>
-              <Text style={styles.alertTitle}>Fire Alert</Text>
-              <Text style={styles.alertDescription}>Fire alert incident report at crescent ...</Text>
+              <Text style={styles.alertTitle}>{item.title}</Text>
+              <Text style={styles.alertDescription}>{item.title} incident report at crescent ...</Text>
             </View>
           </View>
 
@@ -101,10 +120,9 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   iconContainer: {
-    width: 50,
-    height: 50,
+    width: 52,
+    height: 52,
     borderRadius: 50,
-    backgroundColor: '#ACE9EB',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
