@@ -12,7 +12,7 @@ const FirstPage = ({ navigation }) => {
         <View style={styles.column}>
             <ImageBackground style={styles.container} imageStyle={styles.bgCover} source={require('../../assets/emergency.png')}>
                 <SafeAreaView>
-                    <TouchableOpacity style={styles.skipButtonContainer}>
+                    <TouchableOpacity style={styles.skipButtonContainer} onPress={() => navigation.navigate('HomeTabNavigator')}>
                         <Text style={styles.skipButtonText}>Skip</Text>
                     </TouchableOpacity>
                 </SafeAreaView>

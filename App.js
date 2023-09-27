@@ -12,8 +12,9 @@ import HomeScreen from './screens/homepage/Index'
 import NotificationScreen from './screens/notifications/Index'
 import ResourcesScreen from './screens/resources/Index'
 import MoreScreen from './screens/more/Index'
-import { Home3, Notification, Element3, Information } from 'iconsax-react-native'
-
+import { Home3, Notification, Element3, Information, ArrowCircleLeft2, ArrowLeft2 } from 'iconsax-react-native'
+import Signup from './screens/more/screens/signup';
+import NotificationDetails from './screens/notifications/screens/notificationDetails';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,6 +61,58 @@ export default function App() {
           )}
         </Stack.Screen>
         <Stack.Screen
+          name='more'
+        >
+          {() => (
+            <Stack.Navigator
+              initialRouteName='signup'
+              screenOptions={{ headerShown: true }}
+            >
+              <Stack.Screen
+                name='signup'
+                component={Signup}
+                screenOptions={{ headerShown: true }}
+                options={{
+                  title: 'Sign Up',
+                  headerTitleStyle: {
+                    fontFamily: 'Prompt_700Bold',
+                    // fontSize: 20,
+                  },
+                  // headerLeft: () => (
+                  //   <ArrowLeft2 color='#19686A' size={35} onPress={() => navigation.goBack()}  />
+                  // ),
+                }}
+              />
+            </Stack.Navigator>
+          )}
+        </Stack.Screen>
+        <Stack.Screen
+          name='notification-details'
+        >
+          {() => (
+            <Stack.Navigator
+              initialRouteName='details'
+              screenOptions={{ headerShown: true }}
+            >
+              <Stack.Screen
+                name='details'
+                component={NotificationDetails}
+                screenOptions={{ headerShown: true }}
+                options={{
+                  title: 'Notification Details',
+                  headerTitleStyle: {
+                    fontFamily: 'Prompt_700Bold',
+                    // fontSize: 20,
+                  },
+                  // headerLeft: () => (
+                  //   <ArrowLeft2 color='#19686A' size={35} onPress={() => navigation.goBack()}  />
+                  // ),
+                }}
+              />
+            </Stack.Navigator>
+          )}
+        </Stack.Screen>
+        <Stack.Screen
           name="HomeTabNavigator"
           options={{ headerShown: false }}
         >
@@ -70,7 +123,11 @@ export default function App() {
                 tabBarActiveTintColor: '#19686A',
                 tabBarStyle: {
                   paddingTop: 5,
-                  paddingBottom: 2,
+                  paddingBottom: 5,
+                  height: 70,
+                  borderTopStyle: 'solid',
+                  borderTopWidth: 1,
+                  borderColor: 'lightgray'
                 },
                 tabBarLabelStyle: {
                   fontFamily: 'Prompt_400Regular',
@@ -83,7 +140,7 @@ export default function App() {
                 component={HomeScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Home3 name="home" color={color} size={size} />
+                    <Home3 name="home" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />
@@ -92,7 +149,7 @@ export default function App() {
                 component={ResourcesScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Information name="information" color={color} size={size} />
+                    <Information name="information" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />
@@ -101,7 +158,7 @@ export default function App() {
                 component={NotificationScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Notification name="notifications" color={color} size={size} />
+                    <Notification name="notifications" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />
@@ -110,7 +167,7 @@ export default function App() {
                 component={MoreScreen}
                 options={{
                   tabBarIcon: ({ color, size }) => (
-                    <Element3 name="home" color={color} size={size} />
+                    <Element3 name="more" variant='Bold' color={color} size={size} />
                   ),
                 }}
               />
