@@ -1,10 +1,12 @@
-import React, { createRef, useEffect, useRef, useState } from 'react'
+import 'react-native-gesture-handler'
+import React, { createRef, useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, StatusBar, ActivityIndicator, TouchableOpacity, TextInput } from 'react-native'
 import MapView, { Marker } from 'react-native-maps';
-import { Home3, Notification, Element3, Information, Location as LocationIcon, SearchNormal } from 'iconsax-react-native'
+import { Home3, Notification, Element3, Information, Personalcard, Location as LocationIcon, SearchNormal } from 'iconsax-react-native'
 import * as Location from 'expo-location';
 import { OutlineButton } from '../../components/button';
 import SearchBar from '../../components/searchBar';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 
 // This data will come from backend
@@ -144,6 +146,11 @@ const Index = () => {
     text = errorMsg;
   }
 
+  const bottomSheetRef = useRef(null);
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const openBottomSheet = () => bottomSheetRef?.current?.expand();
+  const closeBottomSheet = () => bottomSheetRef.current?.close();
+
   return (
     <View>
       <View style={styles.container}>
@@ -193,10 +200,29 @@ const Index = () => {
             )}
           </ScrollView>
         </View>
+
+        <TouchableOpacity style={styles.contact_btn_parent_container} onPress={openBottomSheet}>
+          <View>
+            <View style={styles.contact_btn}>
+              <Personalcard color='white' variant='Bold' />
+              <Text style={styles.btn_text}>GET CONTACT</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
+
+        <BottomSheet
+          ref={bottomSheetRef}
+          index={0}
+          snapPoints={snapPoints}
+          enablePanDownToClose={true}
+          backgroundStyle={{ borderRadius: 30, }}
+        >
+          <View>
+            <Text>Hello Bottom Sheet Modal</Text>
+          </View>
+        </BottomSheet>
       </View>
     </View>
-
-
   )
 }
 
@@ -250,4 +276,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 4,
   },
+  contact_btn: {
+    backgroundColor: '#19686A',
+    color: 'white',
+    borderRadius: 4,
+    width: 164,
+    height: 56,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+    shadowColor: 'black',
+    elevation: 8,
+  },
+  btn_text: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+    fontFamily: 'Prompt_400Regular',
+  },
+  contact_btn_parent_container: {
+    position: 'absolute',
+    bottom: 40,
+    right: 15,
+    zIndex: 10,
+  }
 })

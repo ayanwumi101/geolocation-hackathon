@@ -5,9 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFonts, Prompt_400Regular } from "@expo-google-fonts/prompt";
 import { SolidButton, TextButton } from '../../components/button';
 import { TextBold, TextMedium, TextRegular } from '../../components/text';
+import { useNavigation } from '@react-navigation/native';
+
 
 const FirstPage = ({ navigation }) => {
-
     return (
         <View style={styles.column}>
             <ImageBackground style={styles.container} imageStyle={styles.bgCover} source={require('../../assets/emergency.png')}>
@@ -33,7 +34,13 @@ const FirstPage = ({ navigation }) => {
 
                 <View style={styles.signUpTexts}>
                     <Text style={styles.hurry}>Not in a hurry?</Text>
-                    <TextButton>SIGN UP</TextButton>
+                    <TextButton
+                        containerProps={{
+                            onPress: () => navigation.navigate('more'),
+                        }}
+                    >
+                        SIGN UP
+                    </TextButton>
                 </View>
             </ScrollView>
         </View>

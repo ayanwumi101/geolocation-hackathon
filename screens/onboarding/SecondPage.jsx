@@ -40,7 +40,13 @@ const SecondPage = ({ navigation }) => {
 
                 <View style={styles.signUpTexts}>
                     <Text style={styles.hurry}>Not in a hurry?</Text>
-                    <TextButton>SIGN UP</TextButton>
+                    <TextButton
+                        containerProps={{
+                            onPress: () => navigation.navigate('more'),
+                        }}
+                    >
+                        SIGN UP
+                    </TextButton>
                 </View>
             </ScrollView>
         </View>

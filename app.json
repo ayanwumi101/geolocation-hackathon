@@ -4,7 +4,7 @@
     "slug": "Qcall",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/qcall.png",
+    "icon": "./assets/qcall-2.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/qcall.png",
+        "foregroundImage": "./assets/qcall-2.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.dev_cody.Qcall"
     },
     "web": {
-      "favicon": "./assets/qcall.png"
+      "favicon": "./assets/qcall-2.png"
     },
     "plugins": [
       [
@@ -33,6 +39,11 @@
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "4b31d588-2294-4cf4-9c24-851334a1eec5"
+      }
+    }
   }
 }

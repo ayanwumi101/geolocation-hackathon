@@ -54,17 +54,17 @@ export default function SearchBar({onSearch=(place) => null}) {
     return (
         <View style={styles.searchContainer}>
             <View style={styles.searchBar}>
-                <LocationIcon color='#AEAAAE' size={28} />
+                <LocationIcon color='#AEAAAE' size={28} variant='Bold' />
                 <TextInput
                     style={styles.searchInput}
-                    placeholder='Search...'
+                    placeholder='Search here.....'
                     value={query}
                     onChangeText={(value) => setQuery(value)}
                     onFocus={() => setIsActive(true)}
                     onSubmitEditing={() => setIsActive(false)}
                 />
                 <TouchableOpacity onPress={() => setQuery('')}>
-                    <CloseCircle color='#AEAAAE' size={28} />
+                    <CloseCircle color='#AEAAAE' size={28} variant='Bold' />
                 </TouchableOpacity>
             </View>
             {query && isActive && <FlatList style={styles.searchDropdown}
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 10,
         marginHorizontal: 10,
-        marginBottom: 10,
+        marginBottom: 20,
         borderRadius: 40,
         shadowColor: 'black',
         shadowOffset: {
