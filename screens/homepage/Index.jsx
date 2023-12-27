@@ -6,8 +6,9 @@ import { Home3, Notification, Element3, Information, Personalcard, Location as L
 import * as Location from 'expo-location';
 import { OutlineButton } from '../../components/button';
 import SearchBar from '../../components/searchBar';
-import BottomSheet from '@gorhom/bottom-sheet';
-
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import { MaterialIcons } from '@expo/vector-icons'
+import ContactDetails from '../contactDetails/index';
 
 // This data will come from backend
 const markersList = [
@@ -147,7 +148,7 @@ const Index = () => {
   }
 
   const bottomSheetRef = useRef(null);
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const snapPoints = useMemo(() => ['25%', '50%', '65%'], []);
   const openBottomSheet = () => bottomSheetRef?.current?.expand();
   const closeBottomSheet = () => bottomSheetRef.current?.close();
 
@@ -201,6 +202,12 @@ const Index = () => {
           </ScrollView>
         </View>
 
+        <TouchableOpacity onPress={openBottomSheet}>
+            <View style={styles.campaign_btn}>
+              <MaterialIcons name='campaign' color='#19686A' size={30} />
+            </View>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.contact_btn_parent_container} onPress={openBottomSheet}>
           <View>
             <View style={styles.contact_btn}>
@@ -212,13 +219,15 @@ const Index = () => {
 
         <BottomSheet
           ref={bottomSheetRef}
-          index={0}
+          index={-1}
           snapPoints={snapPoints}
           enablePanDownToClose={true}
-          backgroundStyle={{ borderRadius: 30, }}
+          backgroundStyle={{ borderRadius: 50, }}
         >
           <View>
-            <Text>Hello Bottom Sheet Modal</Text>
+            {/* <BottomSheetScrollView horizontal={true}> */}
+              <ContactDetails />
+            {/* </BottomSheetScrollView> */}
           </View>
         </BottomSheet>
       </View>
@@ -300,6 +309,21 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 40,
     right: 15,
+    // zIndex: 2,
+  },
+  campaign_btn: {
+    position: 'absolute',
+    bottom: 110,
+    right: 15,
     zIndex: 10,
+    backgroundColor: '#A8EFF0',
+    borderRadius: 4,
+    width: 54,
+    height: 54,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: 'black',
+    elevation: 10,
   }
 })
