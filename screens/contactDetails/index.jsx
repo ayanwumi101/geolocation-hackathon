@@ -7,7 +7,7 @@ import Contact from './screens/Contact'
 import Comments from './screens/Comments'
 
 
-const index = () => {
+const index = ({navigation}) => {
   const [activeTab, setActiveTab] = useState(0)
   return (
     <View style={styles.container}>
@@ -16,7 +16,7 @@ const index = () => {
         <View>
             {activeTab === 0 && <Overview />}
             {activeTab === 1 && <Contact />}
-            {activeTab === 2 && <Comments />}
+            {activeTab === 2 && <Comments navigation={navigation} />}
         </View>
     </View>
   )

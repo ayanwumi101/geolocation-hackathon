@@ -19,6 +19,10 @@ import Signup from './screens/more/screens/signup';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import EmergenciesList from './screens/resources/components/EmergenciesList/EmergenciesList'
 import EmergencyDetails from './screens/resources/components/EmergencyDetails/EmergencyDetails';
+import AnnounceEmergency from './screens/AnnounceEmergency';
+import Feedback from './screens/Feedback';
+import StateScreen from './screens/State';
+import ExecutiveDetailsScreen from './screens/ExecutiveDetails';
 
 
 const Stack = createNativeStackNavigator();
@@ -207,6 +211,83 @@ export default function App() {
                   }}
                 />
               </Tab.Navigator>
+            )}
+          </Stack.Screen>
+          <Stack.Screen
+            name='announce-emergency'
+          >
+            {() => (
+              <Stack.Navigator
+                initialRouteName='announce'
+                screenOptions={{ headerShown: true }}
+              >
+                <Stack.Screen
+                  name='announce'
+                  component={AnnounceEmergency}
+                  screenOptions={{ headerShown: true }}
+                  options={{
+                    title: 'Announce Emergency',
+                    headerTitleStyle: {
+                      fontFamily: 'Prompt_700Bold',
+                    },
+                  }}
+                />
+              </Stack.Navigator>
+            )}
+          </Stack.Screen>
+          <Stack.Screen
+            name='feedback'
+          >
+            {() => (
+              <Stack.Navigator
+                initialRouteName='feedback-screen'
+                screenOptions={{ headerShown: true }}
+              >
+                <Stack.Screen
+                  name='feedback-screen'
+                  component={Feedback}
+                  screenOptions={{ headerShown: true }}
+                  options={{
+                    title: 'Feedback',
+                    headerTitleStyle: {
+                      fontFamily: 'Prompt_700Bold',
+                    },
+                  }}
+                />
+              </Stack.Navigator>
+            )}
+          </Stack.Screen>
+          <Stack.Screen
+            name='government'
+          >
+            {() => (
+              <Stack.Navigator
+                initialRouteName='state-screen'
+                screenOptions={{ headerShown: false }}
+              >
+                <Stack.Screen
+                  name='state-screen'
+                  component={StateScreen}
+                  screenOptions={{ headerShown: true }}
+                  options={{
+                    title: 'state-screen',
+                    headerTitleStyle: {
+                      fontFamily: 'Prompt_700Bold',
+                    },
+                  }}
+                />
+                <Stack.Screen
+                  name='executive-details'
+                  component={ExecutiveDetailsScreen}
+                  // screenOptions={{ headerShown: true }}
+                  options={{
+                    title: 'executive-details',
+                    headerTitleStyle: {
+                      fontFamily: 'Prompt_700Bold',
+                    },
+                  }}
+                />
+              </Stack.Navigator>
             )}
           </Stack.Screen>
         </Stack.Navigator>

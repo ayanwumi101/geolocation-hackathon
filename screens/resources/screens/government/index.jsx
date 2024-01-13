@@ -1,30 +1,20 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import Government from '../../../Government'
 
-
-const index = () => {
+const Index = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <View>
-                <Text>
-                    Government page
-                </Text>
-            </View>
-            <View>
-                <Text>Other things goes here</Text>
-            </View>
+           <Government navigation={navigation} />
         </View>
     )
 }
 
-export default index
+export default Index
 
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '90%',
+        paddingHorizontal: 20,
     },
 })

@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
     },
     active_link: {
         fontSize: 16,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: '#19686A',
         textTransform: 'capitalize',
-        fontFamily: 'Prompt_400Regular',
+        fontFamily: 'Prompt_500Medium',
         borderBottomColor: '#19686A',
         borderBottomWidth: 3,
         paddingBottom: 12,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     },
     link: {
         fontSize: 16,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         color: '#787579',
         textTransform: 'capitalize',
         fontFamily: 'Prompt_400Regular',

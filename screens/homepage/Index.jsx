@@ -80,7 +80,7 @@ const markerImageTable = {
   'Fight': require('../../assets/agency.png'),
 }
 
-const Index = () => {
+const Index = ({navigation}) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [filters, setFilters] = useState([])
   const [markers, setMarkers] = useState(markersList)
@@ -192,8 +192,9 @@ const Index = () => {
                 onPress={() => handleFilter(item.title)}
                 style={StyleSheet.compose(styles.headerItem, {
                   backgroundColor: filters.includes(item.title) ? '#19686A' : 'white',
+                  borderColor: filters.includes(item.title) ? '#19686A' : 'lightgray',
                 })}>
-                <Image source={item.icon} style={{ width: 25, height: 25 }} />
+                <Image source={item.icon} style={{ width: 25, height: 20 }} />
                 <Text
                   style={{ color: filters.includes(item.title) ? 'white' : 'black', fontFamily: 'Prompt_400Regular' }}
                 >{item.title}</Text>
@@ -202,10 +203,10 @@ const Index = () => {
           </ScrollView>
         </View>
 
-        <TouchableOpacity onPress={openBottomSheet}>
-            <View style={styles.campaign_btn}>
+        <TouchableOpacity style={styles.campaign_btn} onPress={() => navigation.navigate('announce-emergency')}>
+            {/* <View style={styles.campaign_btn}> */}
               <MaterialIcons name='campaign' color='#19686A' size={30} />
-            </View>
+            {/* </View> */}
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.contact_btn_parent_container} onPress={openBottomSheet}>
@@ -226,7 +227,7 @@ const Index = () => {
         >
           <View>
             {/* <BottomSheetScrollView horizontal={true}> */}
-              <ContactDetails />
+              <ContactDetails navigation={navigation} />
             {/* </BottomSheetScrollView> */}
           </View>
         </BottomSheet>
@@ -275,11 +276,11 @@ const styles = StyleSheet.create({
   headerItem: {
     marginRight: 5,
     paddingHorizontal: 15,
-    paddingVertical: 8,
+    paddingVertical: 10,
     borderRadius: 10,
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: '#19686A',
+    // borderColor: 'lightgray',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -315,7 +316,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 110,
     right: 15,
-    zIndex: 10,
+
     backgroundColor: '#A8EFF0',
     borderRadius: 4,
     width: 54,
@@ -324,6 +325,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: 'black',
-    elevation: 10,
-  }
+    elevation: 2,
+  },
 })

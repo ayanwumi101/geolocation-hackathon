@@ -18,8 +18,8 @@ const Index = ({navigation}) => {
       </View>
       <View>
         {position === 0 && <Emergency navigation={navigation} />}
-        {position === 1 && <Government />}
-        {position === 2 && <Agencies />}
+        {position === 1 && <Government navigation={navigation} />}
+        {position === 2 && <Agencies navigation={navigation} />}
       </View>
     </View>
   )
