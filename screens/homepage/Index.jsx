@@ -109,7 +109,6 @@ const Index = ({navigation}) => {
 
   useEffect(() => {
     (async () => {
-
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         setErrorMsg('Permission to access userLocation was denied');
@@ -277,7 +276,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderRadius: 10,
+    borderRadius: 60,
     borderWidth: 1,
     borderStyle: 'solid',
     // borderColor: 'lightgray',

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         gap: 13,
-        marginBottom: 20,
+        marginBottom: 15,
         paddingHorizontal: 15,
     },
     activeTab: {
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
         borderColor: '#19686A',
         borderRadius: 60,
         textAlign: 'center',
-        backgroundColor: '#19686A'
+        backgroundColor: '#19686A',
+        elevation: 10,
     }
 })

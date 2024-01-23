@@ -13,7 +13,7 @@ const index = ({navigation}) => {
             Should in case you witnessed an emergency, what would be your next line of action?
         </Text>
       </View>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.notificationsContainer}>
           {emergenciesList.map((item, index) => <SingleEmergency key={index} item={item} navigation={navigation} />)}
           {/* <FlatList

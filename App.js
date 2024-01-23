@@ -23,6 +23,8 @@ import AnnounceEmergency from './screens/AnnounceEmergency';
 import Feedback from './screens/Feedback';
 import StateScreen from './screens/State';
 import ExecutiveDetailsScreen from './screens/ExecutiveDetails';
+import AgenciesScreen from './screens/AgenciesList';
+import AgencyDetailsScreen from './screens/AgencyDetails';
 
 
 const Stack = createNativeStackNavigator();
@@ -42,50 +44,38 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar backgroundColor="#fff" animated={true} translucent={true} />
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName='Onboarding'
+          initialRouteName="Onboarding"
           screenOptions={{ headerShown: false }}
         >
-          <Stack.Screen
-            name='Onboarding'
-          >
+          <Stack.Screen name="Onboarding">
             {() => (
               <Stack.Navigator
-                initialRouteName='onboarding-1'
+                initialRouteName="onboarding-1"
                 screenOptions={{ headerShown: false }}
               >
-                <Stack.Screen
-                  name='onboarding-1'
-                  component={FirstPage}
-                />
-                <Stack.Screen
-                  name='onboarding-2'
-                  component={SecondPage}
-                />
-                <Stack.Screen
-                  name='onboarding-3'
-                  component={ThirdPage}
-                />
+                <Stack.Screen name="onboarding-1" component={FirstPage} />
+                <Stack.Screen name="onboarding-2" component={SecondPage} />
+                <Stack.Screen name="onboarding-3" component={ThirdPage} />
               </Stack.Navigator>
             )}
           </Stack.Screen>
-          <Stack.Screen
-            name='more'
-          >
+          <Stack.Screen name="more">
             {() => (
               <Stack.Navigator
-                initialRouteName='signup'
+                initialRouteName="signup"
                 screenOptions={{ headerShown: true }}
               >
                 <Stack.Screen
-                  name='signup'
+                  name="signup"
                   component={Signup}
                   screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'Sign Up',
+                    title: "Sign Up",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                       // fontSize: 20,
                     },
                     // headerLeft: () => (
@@ -96,55 +86,51 @@ export default function App() {
               </Stack.Navigator>
             )}
           </Stack.Screen>
-          <Stack.Screen
-            name='notification-info'
-          >
+          <Stack.Screen name="notification-info">
             {() => (
               <Stack.Navigator
-                initialRouteName='notification-details'
+                initialRouteName="notification-details"
                 screenOptions={{ headerShown: true }}
               >
                 <Stack.Screen
-                  name='notification-details'
+                  name="notification-details"
                   component={NotificationDetails}
                   screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'Notification Details',
+                    title: "Notification Details",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                     },
                   }}
                 />
               </Stack.Navigator>
             )}
           </Stack.Screen>
-          <Stack.Screen
-            name='emergencies'
-          >
+          <Stack.Screen name="emergencies">
             {() => (
               <Stack.Navigator
-                initialRouteName='emergencies-list'
+                initialRouteName="emergencies-list"
                 screenOptions={{ headerShown: true }}
               >
                 <Stack.Screen
-                  name='emergencies-list'
+                  name="emergencies-list"
                   component={EmergenciesList}
                   screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'Emergencies',
+                    title: "Emergencies",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                     },
                   }}
                 />
                 <Stack.Screen
-                  name='emergency-details'
+                  name="emergency-details"
                   component={EmergencyDetails}
                   screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'Emergency Details',
+                    title: "Emergency Details",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                     },
                   }}
                 />
@@ -159,17 +145,17 @@ export default function App() {
               <Tab.Navigator
                 screenOptions={{
                   headerShown: false,
-                  tabBarActiveTintColor: '#19686A',
+                  tabBarActiveTintColor: "#19686A",
                   tabBarStyle: {
                     paddingTop: 5,
                     paddingBottom: 5,
                     height: 70,
-                    borderTopStyle: 'solid',
+                    borderTopStyle: "solid",
                     borderTopWidth: 1,
-                    borderColor: 'lightgray'
+                    borderColor: "lightgray",
                   },
                   tabBarLabelStyle: {
-                    fontFamily: 'Prompt_400Regular',
+                    fontFamily: "Prompt_400Regular",
                     fontSize: 14,
                   },
                 }}
@@ -179,7 +165,12 @@ export default function App() {
                   component={HomeScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Home3 name="home" variant='Bold' color={color} size='28' />
+                      <Home3
+                        name="home"
+                        variant="Bold"
+                        color={color}
+                        size="28"
+                      />
                     ),
                   }}
                 />
@@ -188,7 +179,12 @@ export default function App() {
                   component={ResourcesScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Information name="information" variant='Bold' color={color} size='28' />
+                      <Information
+                        name="information"
+                        variant="Bold"
+                        color={color}
+                        size="28"
+                      />
                     ),
                   }}
                 />
@@ -197,7 +193,12 @@ export default function App() {
                   component={NotificationsScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Notification name="notifications" variant='Bold' color={color} size='28' />
+                      <Notification
+                        name="notifications"
+                        variant="Bold"
+                        color={color}
+                        size="28"
+                      />
                     ),
                   }}
                 />
@@ -206,86 +207,116 @@ export default function App() {
                   component={MoreScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Element3 name="more" variant='Bold' color={color} size='28' />
+                      <Element3
+                        name="more"
+                        variant="Bold"
+                        color={color}
+                        size="28"
+                      />
                     ),
                   }}
                 />
               </Tab.Navigator>
             )}
           </Stack.Screen>
-          <Stack.Screen
-            name='announce-emergency'
-          >
+          <Stack.Screen name="announce-emergency">
             {() => (
               <Stack.Navigator
-                initialRouteName='announce'
+                initialRouteName="announce"
                 screenOptions={{ headerShown: true }}
               >
                 <Stack.Screen
-                  name='announce'
+                  name="announce"
                   component={AnnounceEmergency}
                   screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'Announce Emergency',
+                    title: "Announce Emergency",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                     },
                   }}
                 />
               </Stack.Navigator>
             )}
           </Stack.Screen>
-          <Stack.Screen
-            name='feedback'
-          >
+          <Stack.Screen name="feedback">
             {() => (
               <Stack.Navigator
-                initialRouteName='feedback-screen'
+                initialRouteName="feedback-screen"
                 screenOptions={{ headerShown: true }}
               >
                 <Stack.Screen
-                  name='feedback-screen'
+                  name="feedback-screen"
                   component={Feedback}
                   screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'Feedback',
+                    title: "Feedback",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                     },
                   }}
                 />
               </Stack.Navigator>
             )}
           </Stack.Screen>
-          <Stack.Screen
-            name='government'
-          >
+          <Stack.Screen name="government">
             {() => (
               <Stack.Navigator
-                initialRouteName='state-screen'
+                initialRouteName="state-screen"
                 screenOptions={{ headerShown: false }}
               >
                 <Stack.Screen
-                  name='state-screen'
+                  name="state-screen"
                   component={StateScreen}
                   screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'state-screen',
+                    title: "state-screen",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                     },
                   }}
                 />
                 <Stack.Screen
-                  name='executive-details'
+                  name="executive-details"
                   component={ExecutiveDetailsScreen}
                   // screenOptions={{ headerShown: true }}
                   options={{
-                    title: 'executive-details',
+                    title: "executive-details",
                     headerTitleStyle: {
-                      fontFamily: 'Prompt_700Bold',
+                      fontFamily: "Prompt_700Bold",
                     },
                   }}
+                />
+              </Stack.Navigator>
+            )}
+          </Stack.Screen>
+          <Stack.Screen name="agencies">
+            {() => (
+              <Stack.Navigator
+                initialRouteName="federal-agencies"
+                screenOptions={{ headerShown: false }}
+              >
+                <Stack.Screen
+                  name="federal-agencies"
+                  component={AgenciesScreen}
+                  screenOptions={{ headerShown: false }}
+                  // options={{
+                  //   title: "state-screen",
+                  //   headerTitleStyle: {
+                  //     fontFamily: "Prompt_700Bold",
+                  //   },
+                  // }}
+                />
+                <Stack.Screen
+                  name="agency-details"
+                  component={AgencyDetailsScreen}
+                  screenOptions={{ headerShown: false }}
+                  // options={{
+                  //   title: "agency-details",
+                  //   headerTitleStyle: {
+                  //     fontFamily: "Prompt_700Bold",
+                  //   },
+                  // }}
                 />
               </Stack.Navigator>
             )}

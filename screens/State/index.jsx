@@ -20,7 +20,6 @@ const Index = ({route, navigation}) => {
           <View>
             <Tabs />
           </View>
-
           
           <View style={styles.cardsContainer}>
             <ExecutiveCards navigation={navigation} />

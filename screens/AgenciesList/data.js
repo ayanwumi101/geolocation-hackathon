@@ -1,0 +1,16 @@
+export const governmentAgencies = [
+    "Budget Office",
+    "Bureau of Enterprise (BPE)",
+    "Central Bank of Nigeria (CBN)",
+    "Corporate Affairs Commission (CAC)",
+    "Debt Management Office",
+    "Department of Petroleum Resources (DPR)",
+    "Economic and Financial Crimes Commission (EFCC)",
+    "ECOWAS",
+    "Federal Aviation Authority of Nigeria (FAAN)",
+    "Federal Housing Authority (FHA)",
+    "Federal Inland Revenue Service (FIRS) ",
+    "Independent Corrupt Practices and other related Offences",
+    "Independent National Electoral Commission (INEC)",
+    "Industrial Training Fund (ITF)",
+]
