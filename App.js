@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar backgroundColor="#fff" animated={true} translucent={true} />
+      <StatusBar animated={true} translucent={true} />
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Onboarding"

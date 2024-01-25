@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     rating_container: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
-        gap: 30,
+        alignItems: 'flex-start',
+        gap: 20,
         marginBottom: 15,
     },
     rating_number: {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
         color: '#19686A',
     },
     comment_heading: {
-        marginBottom: 15,
+        marginBottom: 10,
     },
     comment_container: {
         width: '87%',
@@ -139,27 +139,27 @@ const styles = StyleSheet.create({
     outline_btn_container: {
         width: '100%',
         borderColor: '#19686A',
-        paddingVertical: 15,
+        paddingVertical: 13,
         borderRadius: 4,
-        marginBottom: 18,
+        marginBottom: 15,
         borderWidth: 1,
     },
     btn_container: {
         width: '100%',
         backgroundColor: '#19686A',
-        paddingVertical: 15,
+        paddingVertical: 13,
         borderRadius: 4,
     },
     btn_text: {
         color: 'white',
         textAlign: 'center',
         fontFamily: 'Prompt_500Medium',
-        fontSize: 16,
+        fontSize: 15,
     },
     outline_btn_text: {
         color: '#19686A',
         textAlign: 'center',
         fontFamily: 'Prompt_500Medium',
-        fontSize: 16,
+        fontSize: 15,
     },
 })

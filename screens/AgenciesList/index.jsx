@@ -26,7 +26,7 @@ const Index = ({navigation}) => {
 
         <View style={styles.agenciesContainer}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            {governmentAgencies.map((item, index) => <Agency agency={item} key={index} />)}
+            {governmentAgencies.map((item, index) => <Agency agency={item} key={index} navigation={navigation} />)}
           </ScrollView>
         </View>
       </View>
@@ -37,9 +37,14 @@ const Index = ({navigation}) => {
 
 export default Index
 
-const Agency = ({agency}) => {
+const Agency = ({agency, navigation}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity 
+      onPress={() => navigation.navigate('agencies', {
+        screen: "agency-details",
+        params: { details: agency }
+      })}
+    >
       <View style={styles.agency}>
         <Text style={styles.agencyText}>{agency}</Text>
       </View>
@@ -54,7 +59,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   more: {
-    fontSize: 25,
+    fontSize: 23,
     fontFamily: 'Prompt_500Medium',
     color: '#484649',
   },

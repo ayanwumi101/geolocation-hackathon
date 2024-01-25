@@ -36,7 +36,7 @@ export const ActionIcons = ({icon, text}) => {
     return (
         <View style={styles.action_icon_container}>
             <View style={styles.icon_container}>
-                <MaterialIcons name={icon} color='#19686A' size={25} /> 
+                <MaterialIcons name={icon} color='#19686A' size={23} /> 
             </View>
             <Text style={styles.label}>{text}</Text>
         </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         gap: 12,
         overflow: 'auto',
         alignItems: 'center',
-        marginBottom: 30,
+        marginBottom: 20,
     },
     image_container: {
         width: 280,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 40,
+        gap: 30,
     },
     action_icon_container: {
         marginBottom: 20,
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     icon_container: {
-        width: 48,
-        height: 48,
+        width: 46,
+        height: 46,
         borderRadius: 50,
         borderWidth: 1,
         borderColor: '#19686A',
