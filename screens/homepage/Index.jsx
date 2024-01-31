@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler'
 import React, { createRef, useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import { View, Text, StyleSheet, Image, ScrollView, StatusBar, ActivityIndicator, TouchableOpacity, TextInput } from 'react-native'
-import MapView, { Marker } from 'react-native-maps';
-import { Home3, Notification, Element3, Information, Personalcard, Location as LocationIcon, SearchNormal } from 'iconsax-react-native'
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { Home3, Element3, Information, Personalcard, Location as LocationIcon, SearchNormal } from 'iconsax-react-native'
 import * as Location from 'expo-location';
 import { OutlineButton } from '../../components/button';
 import SearchBar from '../../components/searchBar';
@@ -82,6 +82,7 @@ const markerImageTable = {
 
 const Index = ({navigation}) => {
   const [errorMsg, setErrorMsg] = useState(null);
+  const [location, setLocation] = useState(null)
   const [filters, setFilters] = useState([])
   const [markers, setMarkers] = useState(markersList)
   const [searchPlace, setSearchPlace] = useState({})
@@ -117,8 +118,8 @@ const Index = ({navigation}) => {
 
       let userLocation = await Location.getCurrentPositionAsync({});
       let coord = {
-        latitude: userLocation.coords.latitude,
-        longitude: userLocation.coords.longitude,
+        latitude: userLocation?.coords.latitude,
+        longitude: userLocation?.coords.longitude,
         latitudeDelta: 0.01,
         longitudeDelta: 0.02,
       }
@@ -128,7 +129,7 @@ const Index = ({navigation}) => {
 
   useEffect(() => {
 
-    if (searchPlace.geometry) {
+    if (searchPlace?.geometry) {
       let coord = {
         latitude: searchPlace.geometry.lat,
         longitude: searchPlace.geometry.lng,
@@ -136,7 +137,7 @@ const Index = ({navigation}) => {
         longitudeDelta: 0.02,
       }
       console.log("Ref", coord, mapRef.current)
-      mapRef.current.animateToRegion(coord, 1000)
+      mapRef?.current?.animateToRegion(coord, 1000)
     }
   }, [searchPlace])
 
@@ -162,6 +163,7 @@ const Index = ({navigation}) => {
           style={{ width: '100%', height: '100%' }}
           showsUserLocation={true}
           showsMyLocationButton={true}
+          provider={PROVIDER_GOOGLE}
         >
           {markers.map((marker, i) =>
             <Marker
@@ -172,7 +174,7 @@ const Index = ({navigation}) => {
               image={markerImageTable[marker.type.title]}
             />
           )}
-          {/*If searchPlaces Create a marker at the region */}
+          
           {searchPlace.geometry && <Marker
             coordinate={{
               latitude: searchPlace.geometry.lat,
