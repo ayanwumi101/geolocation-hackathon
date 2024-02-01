@@ -83,6 +83,8 @@ const markerImageTable = {
 const Index = ({navigation}) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [location, setLocation] = useState(null)
+  const [currentLocation, setCurrentLocation] = useState(null);
+  const [initialRegion, setInitialRegion] = useState(null);
   const [filters, setFilters] = useState([])
   const [markers, setMarkers] = useState(markersList)
   const [searchPlace, setSearchPlace] = useState({})
@@ -109,26 +111,50 @@ const Index = ({navigation}) => {
   }, [filters])
 
   useEffect(() => {
-    (async () => {
+    const getLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
+
+      if (status !== "granted") {
         setErrorMsg('Permission to access userLocation was denied');
         return;
       }
 
-      let userLocation = await Location.getCurrentPositionAsync({});
-      let coord = {
-        latitude: userLocation?.coords.latitude,
-        longitude: userLocation?.coords.longitude,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.02,
-      }
-      mapRef.current.animateToRegion(coord, 100)
-    })();
+      let location = await Location.getCurrentPositionAsync({});
+      setCurrentLocation(location.coords);
+
+      setInitialRegion({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
+      });
+
+      mapRef.current.animateToRegion(initialRegion, 100);
+    }
+
+    getLocation();
+
+    // (async () => {
+    //   let { status } = await Location.requestForegroundPermissionsAsync();
+    //   if (status !== 'granted') {
+    //     setErrorMsg('Permission to access userLocation was denied');
+    //     return;
+    //   }
+
+    //   let userLocation = await Location.getCurrentPositionAsync({});
+    //   let coord = {
+    //     latitude: userLocation?.coords.latitude,
+    //     longitude: userLocation?.coords.longitude,
+    //     latitudeDelta: 0.01,
+    //     longitudeDelta: 0.02,
+    //   }
+    //   mapRef.current.animateToRegion(coord, 100);
+    // })();
+
+
   }, []);
 
   useEffect(() => {
-
     if (searchPlace?.geometry) {
       let coord = {
         latitude: searchPlace.geometry.lat,
@@ -155,34 +181,46 @@ const Index = ({navigation}) => {
   return (
     <View>
       <View style={styles.container}>
-        <MapView
-          ref={mapRef}
-          minZoomLevel={15}
-          mapPadding={{ top: StatusBar.currentHeight + 110 }}
-          onLayout={(e) => 1}
-          style={{ width: '100%', height: '100%' }}
-          showsUserLocation={true}
-          showsMyLocationButton={true}
-          provider={PROVIDER_GOOGLE}
-        >
-          {markers.map((marker, i) =>
-            <Marker
-              key={i}
-              coordinate={marker.coordinate}
-              title={marker.type.title}
-              // description={marker.description}
-              image={markerImageTable[marker.type.title]}
-            />
-          )}
-          
-          {searchPlace.geometry && <Marker
-            coordinate={{
-              latitude: searchPlace.geometry.lat,
-              longitude: searchPlace.geometry.lng,
-            }}
-            title={searchPlace.formatted}
-          />}
-        </MapView>
+        {initialRegion && 
+          <MapView
+            ref={mapRef}
+            // minZoomLevel={15}
+            mapPadding={{ top: StatusBar.currentHeight + 110 }}
+            onLayout={(e) => 1}
+            style={{ width: '100%', height: '100%' }}
+            showsUserLocation={true}
+            showsMyLocationButton={true}
+            provider={PROVIDER_GOOGLE}
+            initialRegion={initialRegion}
+          >
+            {currentLocation && 
+              <>
+                {markers.map((marker, i) =>
+                  <Marker
+                    key={i}
+                    // coordinate={marker.coordinate}
+                    coordinate={{
+                      latitude: currentLocation?.latitude,
+                      longitude: currentLocation?.longitude
+                    }}
+                    title={marker.type.title}
+                    // description={marker.description}
+                    // image={markerImageTable[marker.type.title]}
+                  />
+                )}
+              </>
+            }
+            
+            {searchPlace.geometry && <Marker
+                coordinate={{
+                  latitude: searchPlace.geometry.lat,
+                  longitude: searchPlace.geometry.lng,
+                }}
+                title={searchPlace.formatted}
+              />
+            }
+          </MapView>
+        }
         <View style={styles.header}>
           <SearchBar onSearch={(place) => setSearchPlace(place)} />
           <ScrollView horizontal={true}
