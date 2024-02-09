@@ -80,7 +80,7 @@ const markerImageTable = {
   'Fight': require('../../assets/agency.png'),
 }
 
-const Index = ({navigation}) => {
+const Index = ({ navigation }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [location, setLocation] = useState(null)
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -108,51 +108,51 @@ const Index = ({navigation}) => {
       ? markersList
       : markersList.filter(v => filters.includes(v.type.title))
     )
-  }, [filters])
+  }, [filters]);
+
+  // const getLocation = async () => {
+
+  //   let { status } = await Location.requestForegroundPermissionsAsync();
+
+  //   if (status === "granted") {
+  //     setErrorMsg('Permission to access userLocation was denied');
+  //     return;
+  //     await Location.requestBackgroundPermissionsAsync();
+  //   }
+
+  //   let location = await Location.getCurrentPositionAsync({});
+  //   setCurrentLocation(location.coords);
+
+  //   setInitialRegion({
+  //     latitude: location.coords.latitude,
+  //     longitude: location.coords.longitude,
+  //     latitudeDelta: 0.005,
+  //     longitudeDelta: 0.005,
+  //   });
+
+  //   mapRef.current.animateToRegion(initialRegion, 100);
+  // }
+
+  // useEffect(() => {
+  //   getLocation();
+  // }, []);
+
 
   useEffect(() => {
-    const getLocation = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+    (async () => {
 
-      if (status !== "granted") {
-        setErrorMsg('Permission to access userLocation was denied');
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
         return;
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      setCurrentLocation(location.coords);
-
-      setInitialRegion({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-        latitudeDelta: 0.005,
-        longitudeDelta: 0.005,
-      });
-
-      mapRef.current.animateToRegion(initialRegion, 100);
-    }
-
-    getLocation();
-
-    // (async () => {
-    //   let { status } = await Location.requestForegroundPermissionsAsync();
-    //   if (status !== 'granted') {
-    //     setErrorMsg('Permission to access userLocation was denied');
-    //     return;
-    //   }
-
-    //   let userLocation = await Location.getCurrentPositionAsync({});
-    //   let coord = {
-    //     latitude: userLocation?.coords.latitude,
-    //     longitude: userLocation?.coords.longitude,
-    //     latitudeDelta: 0.01,
-    //     longitudeDelta: 0.02,
-    //   }
-    //   mapRef.current.animateToRegion(coord, 100);
-    // })();
-
-
+      setLocation(location);
+    })();
   }, []);
+
+  console.log("Location", location);
 
   useEffect(() => {
     if (searchPlace?.geometry) {
@@ -173,6 +173,8 @@ const Index = ({navigation}) => {
     text = errorMsg;
   }
 
+  console.log("Current Location", currentLocation, initialRegion);
+
   const bottomSheetRef = useRef(null);
   const snapPoints = useMemo(() => ['25%', '50%', '65%'], []);
   const openBottomSheet = () => bottomSheetRef?.current?.expand();
@@ -181,10 +183,10 @@ const Index = ({navigation}) => {
   return (
     <View>
       <View style={styles.container}>
-        {initialRegion && 
+        {initialRegion &&
           <MapView
             ref={mapRef}
-            // minZoomLevel={15}
+            minZoomLevel={15}
             mapPadding={{ top: StatusBar.currentHeight + 110 }}
             onLayout={(e) => 1}
             style={{ width: '100%', height: '100%' }}
@@ -193,31 +195,30 @@ const Index = ({navigation}) => {
             provider={PROVIDER_GOOGLE}
             initialRegion={initialRegion}
           >
-            {currentLocation && 
+            {currentLocation &&
               <>
                 {markers.map((marker, i) =>
                   <Marker
                     key={i}
-                    // coordinate={marker.coordinate}
                     coordinate={{
                       latitude: currentLocation?.latitude,
                       longitude: currentLocation?.longitude
                     }}
                     title={marker.type.title}
                     // description={marker.description}
-                    // image={markerImageTable[marker.type.title]}
+                    image={markerImageTable[marker.type.title]}
                   />
                 )}
               </>
             }
-            
+
             {searchPlace.geometry && <Marker
-                coordinate={{
-                  latitude: searchPlace.geometry.lat,
-                  longitude: searchPlace.geometry.lng,
-                }}
-                title={searchPlace.formatted}
-              />
+              coordinate={{
+                latitude: searchPlace.geometry.lat,
+                longitude: searchPlace.geometry.lng,
+              }}
+              title={searchPlace.formatted}
+            />
             }
           </MapView>
         }
@@ -243,9 +244,9 @@ const Index = ({navigation}) => {
         </View>
 
         <TouchableOpacity style={styles.campaign_btn} onPress={() => navigation.navigate('announce-emergency')}>
-            {/* <View style={styles.campaign_btn}> */}
-              <MaterialIcons name='campaign' color='#19686A' size={30} />
-            {/* </View> */}
+          {/* <View style={styles.campaign_btn}> */}
+          <MaterialIcons name='campaign' color='#19686A' size={30} />
+          {/* </View> */}
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.contact_btn_parent_container} onPress={openBottomSheet}>
@@ -266,7 +267,7 @@ const Index = ({navigation}) => {
         >
           <View>
             {/* <BottomSheetScrollView horizontal={true}> */}
-              <ContactDetails navigation={navigation} />
+            <ContactDetails navigation={navigation} />
             {/* </BottomSheetScrollView> */}
           </View>
         </BottomSheet>

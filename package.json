@@ -12,13 +12,16 @@
     "@expo-google-fonts/prompt": "^0.2.3",
     "@gorhom/bottom-sheet": "^4.5.1",
     "@react-native-community/datetimepicker": "7.2.0",
+    "@react-native-firebase/app": "^18.8.0",
     "@react-native-picker/picker": "2.4.10",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.13",
     "expo": "~49.0.11",
+    "expo-dev-client": "~2.4.12",
     "expo-font": "~11.4.0",
     "expo-image-picker": "~14.3.2",
+    "expo-location": "~16.1.0",
     "expo-permissions": "~14.2.1",
     "expo-splash-screen": "~0.20.5",
     "expo-status-bar": "~1.6.0",
@@ -34,7 +37,7 @@
     "react-native-screens": "~3.22.0",
     "react-native-star-rating-widget": "^1.7.3",
     "react-native-vector-icons": "^10.0.0",
-    "expo-location": "~16.1.0"
+    "expo-build-properties": "~0.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
