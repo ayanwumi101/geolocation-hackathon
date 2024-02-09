@@ -336,6 +336,7 @@ export const images = [
 
 
 // Burns: {
+
 //           "What is the cause of burns":
 //             "Burns and scalds are damage to the skin caused by heat. Both are treated in the same way. A burn is caused by dry heat – by an iron or fire, for example. A scald is caused by something wet, such as hot water or steam. Burns can be very painful and may cause: red or peeling skin. Blisters. Swelling. White or charred skin. The amount of pain you feel isn’t always related to how serious the burn is. Even a very serious burn may be relatively painless. Both burns and scalds can be caused by: coming into contact with something hot, such as a flame, hot iron, oven or stove, hair straighteners or chemicals. electricity. radiation, such as sunlight, sunlamps or sunbeds. friction, for example if you fall on a carpet and burn your skin. coming into contact with a corrosive substance, such as acid. Breathing in smoke or poisonous fumes can also cause burns.",
 //           "Signs and Symptoms":
@@ -384,3 +385,6 @@ export const images = [
 //           "What to do in emergency situation":
 //             "If you think someone has been poisoned, you should: try to stay calm. check if they’re breathing. if they’re not breathing, call 999 or 112 for medical help. if they’re breathing, try to find out what they’ve been poisoned with. if they’re unconscious, check if there are any containers of pills or other tablets nearby. if they’re conscious, ask them what they’ve taken. if they’ve been poisoned by swallowing something, try to make them spit it out – for example, you could try using a spoon handle to gently press their tongue down. don’t try to make them vomit. don’t give them anything to eat or drink. don’t give them medication unless a healthcare professional tells you to. if the poison is on their skin, remove any contaminated clothing and rinse the affected area with water. if the poison is in their eyes, rinse their eyes with water for 15 minutes. if the poison is inhaled, get them to fresh air as soon as possible. if the poison is a household cleaner or other chemical, read the container’s label and follow any instructions for accidental poisoning.",
 //         },
+
+
+// id("com.google.gms.google-services") version "4.4.0" apply false

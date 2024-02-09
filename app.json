@@ -31,6 +31,7 @@
 
       ],
       "package": "com.dev_cody.Qcall", 
+      "googleServicesFile": "./google-services.json",
       "config": {
          "googleMaps": {
           "apiKey": "AIzaSyAYYL_LUB17A2GutHVgPC3Wgt47IKZXojg"
@@ -54,6 +55,8 @@
         }
       ],
       "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/crashlytics",
       [
         "expo-build-properties",
         {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "662618088402",
+    "project_id": "qcall-38151",
+    "storage_bucket": "qcall-38151.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662618088402:android:28acb9c296ae0c6d199e0b",
+        "android_client_info": {
+          "package_name": "com.dev_cody.Qcall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMAHZB35LSCPg1iSNDZDIkbGT4EzQ18Ws"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
