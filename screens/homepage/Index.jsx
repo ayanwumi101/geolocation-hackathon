@@ -1,12 +1,12 @@
 import 'react-native-gesture-handler'
 import React, { createRef, useEffect, useMemo, useRef, useState, useCallback } from 'react'
-import { View, Text, StyleSheet, Image, ScrollView, StatusBar, ActivityIndicator, TouchableOpacity, TextInput } from 'react-native'
+import { View, Text, StyleSheet, Image, ScrollView, StatusBar, ActivityIndicator, TouchableOpacity, TextInput, Button } from 'react-native'
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import { Home3, Element3, Information, Personalcard, Location as LocationIcon, SearchNormal } from 'iconsax-react-native'
+// import { Home3, Element3, Information, Personalcard, Location as LocationIcon, SearchNormal } from 'iconsax-react-native'
 import * as Location from 'expo-location';
 import { OutlineButton } from '../../components/button';
 import SearchBar from '../../components/searchBar';
-import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import BottomSheet, { BottomSheetScrollView, BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { MaterialIcons } from '@expo/vector-icons'
 import ContactDetails from '../contactDetails/index';
 
@@ -110,62 +110,44 @@ const Index = ({ navigation }) => {
     )
   }, [filters]);
 
-  // const getLocation = async () => {
+  const getLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
 
-  //   let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg('Permission to access userLocation was denied');
+      return;
+    }
 
-  //   if (status === "granted") {
-  //     setErrorMsg('Permission to access userLocation was denied');
-  //     return;
-  //     await Location.requestBackgroundPermissionsAsync();
-  //   }
+    let location = await Location.getCurrentPositionAsync({});
+    setCurrentLocation(location?.coords);
 
-  //   let location = await Location.getCurrentPositionAsync({});
-  //   setCurrentLocation(location.coords);
+    setInitialRegion({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+      latitudeDelta: 0.005,
+      longitudeDelta: 0.005,
+    });
 
-  //   setInitialRegion({
-  //     latitude: location.coords.latitude,
-  //     longitude: location.coords.longitude,
-  //     latitudeDelta: 0.005,
-  //     longitudeDelta: 0.005,
-  //   });
-
-  //   mapRef.current.animateToRegion(initialRegion, 100);
-  // }
-
-  // useEffect(() => {
-  //   getLocation();
-  // }, []);
-
+    mapRef?.current?.animateToRegion(initialRegion, 100);
+  }
 
   useEffect(() => {
-    (async () => {
-
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
+    getLocation();
   }, []);
 
-  console.log("Location", location);
 
-  useEffect(() => {
-    if (searchPlace?.geometry) {
-      let coord = {
-        latitude: searchPlace.geometry.lat,
-        longitude: searchPlace.geometry.lng,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.02,
-      }
-      console.log("Ref", coord, mapRef.current)
-      mapRef?.current?.animateToRegion(coord, 1000)
-    }
-  }, [searchPlace])
+  // useEffect(() => {
+  //   if (searchPlace?.geometry) {
+  //     let coord = {
+  //       latitude: searchPlace.geometry.lat,
+  //       longitude: searchPlace.geometry.lng,
+  //       latitudeDelta: 0.01,
+  //       longitudeDelta: 0.02,
+  //     }
+  //     console.log("Ref", coord, mapRef.current)
+  //     mapRef?.current?.animateToRegion(coord, 1000)
+  //   }
+  // }, [searchPlace])
 
 
   let text = 'Waiting..';
@@ -186,7 +168,7 @@ const Index = ({ navigation }) => {
         {initialRegion &&
           <MapView
             ref={mapRef}
-            minZoomLevel={15}
+            minZoomLevel={16}
             mapPadding={{ top: StatusBar.currentHeight + 110 }}
             onLayout={(e) => 1}
             style={{ width: '100%', height: '100%' }}
@@ -205,7 +187,7 @@ const Index = ({ navigation }) => {
                       longitude: currentLocation?.longitude
                     }}
                     title={marker.type.title}
-                    // description={marker.description}
+                    description={marker.description}
                     image={markerImageTable[marker.type.title]}
                   />
                 )}
@@ -252,25 +234,30 @@ const Index = ({ navigation }) => {
         <TouchableOpacity style={styles.contact_btn_parent_container} onPress={openBottomSheet}>
           <View>
             <View style={styles.contact_btn}>
-              <Personalcard color='white' variant='Bold' />
+              <MaterialIcons name='contact-emergency' color='white' size={25} />
               <Text style={styles.btn_text}>GET CONTACT</Text>
             </View>
           </View>
         </TouchableOpacity>
 
-        <BottomSheet
-          ref={bottomSheetRef}
-          index={-1}
-          snapPoints={snapPoints}
-          enablePanDownToClose={true}
-          backgroundStyle={{ borderRadius: 50, }}
-        >
-          <View>
-            {/* <BottomSheetScrollView horizontal={true}> */}
-            <ContactDetails navigation={navigation} />
-            {/* </BottomSheetScrollView> */}
-          </View>
-        </BottomSheet>
+        
+
+        
+        {/* <BottomSheetModalProvider> */}
+          <BottomSheet
+            ref={bottomSheetRef}
+            index={-1}
+            snapPoints={snapPoints}
+            enablePanDownToClose={true}
+            backgroundStyle={{ borderRadius: 50, }}
+          >
+            <View>
+              {/* <BottomSheetScrollView horizontal={true}> */}
+              <ContactDetails navigation={navigation} />
+              {/* </BottomSheetScrollView> */}
+            </View>
+          </BottomSheet>
+        {/* </BottomSheetModalProvider> */}
       </View>
     </View>
   )
@@ -338,7 +325,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 5,
     shadowColor: 'black',
-    elevation: 8,
+    elevation: 15,
   },
   btn_text: {
     color: 'white',
@@ -350,13 +337,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 40,
     right: 15,
-    // zIndex: 2,
+    // zIndex: 99,
+    // elevation: 20,
   },
   campaign_btn: {
     position: 'absolute',
     bottom: 110,
     right: 15,
-
     backgroundColor: '#A8EFF0',
     borderRadius: 4,
     width: 54,

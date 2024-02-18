@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { StarRatingDisplay } from 'react-native-star-rating-widget'
+import { Rating } from 'react-native-stock-star-rating'
 
 
 const Comments = ({navigation}) => {
@@ -12,9 +12,10 @@ const Comments = ({navigation}) => {
                     <Text style={styles.rating_number}>4.6</Text>
                 </View>
                 <View style={styles.star}>
-                    <StarRatingDisplay
-                        rating={4.6}
-                        starSize={27}
+                    <Rating 
+                        stars={4.6}
+                        maxStars={5}
+                        size={35}
                         style={styles.star_rating}
                     />
                     <Text style={styles.raters}>53 People</Text>
@@ -77,7 +78,8 @@ const styles = StyleSheet.create({
     rating_number: {
         fontSize: 30,
         color: '#19686A',
-        fontFamily: 'Prompt_500Medium'
+        fontFamily: 'Prompt_500Medium',
+        marginTop: 7,
     },
     star: {
         display: 'flex',

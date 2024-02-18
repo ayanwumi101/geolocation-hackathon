@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import {ArrowCircleUp, ArrowCircleDown} from 'iconsax-react-native'
+import {Ionicons} from '@expo/vector-icons'
 
 const Accordion = ({ data }) => {
     const title = Object.keys(data);
@@ -34,9 +34,9 @@ export const AccordionItem = ({ title, content }) => {
                     <Text style={styles.title}>{title}</Text>
                     <View>
                         {isExpanded ? (
-                            <ArrowCircleUp size={25} color='#19686A' />
+                            <Ionicons name='chevron-up-circle' size={25} color='#19686A' />
                         ) : (
-                            <ArrowCircleDown size={25} color='#19686A' />
+                            <Ionicons name='chevron-down-circle' size={25} color='#19686A' />
                         )}
                     </View>
                 </View>

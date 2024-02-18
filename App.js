@@ -14,7 +14,6 @@ import NotificationsScreen from './screens/notifications/notifications'
 import NotificationDetails from './screens/notificationDetails/notificationDetails'
 import ResourcesScreen from './screens/resources/Index'
 import MoreScreen from './screens/more/Index'
-import { Home3, Notification, Element3, Information, ArrowCircleLeft2, ArrowLeft2 } from 'iconsax-react-native'
 import Signup from './screens/more/screens/signup';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import EmergenciesList from './screens/resources/components/EmergenciesList/EmergenciesList'
@@ -25,6 +24,7 @@ import StateScreen from './screens/State';
 import ExecutiveDetailsScreen from './screens/ExecutiveDetails';
 import AgenciesScreen from './screens/AgenciesList';
 import AgencyDetailsScreen from './screens/AgencyDetails';
+import {Ionicons, AntDesign, Entypo} from '@expo/vector-icons'
 
 
 const Stack = createNativeStackNavigator();
@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar animated={true} translucent={true} />
+      <StatusBar animated={true} translucent={true} networkActivityIndicatorVisible={true} style='dark' />
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Onboarding"
@@ -165,12 +165,7 @@ export default function App() {
                   component={HomeScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Home3
-                        name="home"
-                        variant="Bold"
-                        color={color}
-                        size="28"
-                      />
+                      <Entypo name="home" color={color} size={29} />
                     ),
                   }}
                 />
@@ -179,11 +174,10 @@ export default function App() {
                   component={ResourcesScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Information
-                        name="information"
-                        variant="Bold"
+                      <AntDesign
+                        name="exclamationcircle"
                         color={color}
-                        size="28"
+                        size={28}
                       />
                     ),
                   }}
@@ -193,12 +187,7 @@ export default function App() {
                   component={NotificationsScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Notification
-                        name="notifications"
-                        variant="Bold"
-                        color={color}
-                        size="28"
-                      />
+                      <Ionicons name="notifications" color={color} size={29} />
                     ),
                   }}
                 />
@@ -207,12 +196,7 @@ export default function App() {
                   component={MoreScreen}
                   options={{
                     tabBarIcon: ({ color, size }) => (
-                      <Element3
-                        name="more"
-                        variant="Bold"
-                        color={color}
-                        size="28"
-                      />
+                      <AntDesign name="appstore1" color={color} size={29} />
                     ),
                   }}
                 />

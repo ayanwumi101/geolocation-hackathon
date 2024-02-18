@@ -28,14 +28,13 @@
       },
       "permissions": [
         "ACCESS_BACKGROUND_LOCATION"
-
       ],
-      "package": "com.dev_cody.Qcall", 
+      "package": "com.dev_cody.Qcall",
       "googleServicesFile": "./google-services.json",
       "config": {
-         "googleMaps": {
+        "googleMaps": {
           "apiKey": "AIzaSyAYYL_LUB17A2GutHVgPC3Wgt47IKZXojg"
-         }
+        }
       }
     },
     "web": {
@@ -64,7 +63,8 @@
             "useFrameworks": "static"
           }
         }
-      ]
+      ],
+      "expo-font"
     ],
     "extra": {
       "eas": {

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import Modal from 'react-native-modal'
 import {MaterialIcons} from '@expo/vector-icons'
-import StarRating from 'react-native-star-rating-widget'
+import { RatingInput } from 'react-native-stock-star-rating'
 
 
 const index = ({modalVisible, setModalVisible}) => {
@@ -103,10 +103,12 @@ const FourthStep = ( ) => {
         <View>
             <Text style={styles.stepHeading}>What would you rate the response?</Text>
             <View style={styles.starContainer}>
-                <StarRating
+                <RatingInput
                     rating={rating}
-                    onChange={setRating}
-                    starSize={42}
+                    setRating={setRating}
+                    size={50}
+                    maxStars={5}
+                    bordered={false}
                 />
             </View>
             <View style={styles.rating}>
@@ -206,9 +208,11 @@ const styles = StyleSheet.create({
         fontFamily: 'Prompt_700Bold'
     },
     starContainer: {
-        paddingHorizontal: 35,
-        textAlign: 'center',
         marginBottom: 15,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
     },
     rating: {
         display: 'flex',

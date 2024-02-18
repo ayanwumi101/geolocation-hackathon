@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
-import {SearchNormal} from 'iconsax-react-native'
+// import {SearchNormal} from 'iconsax-react-native'
 
 const Index = () => {
   return (
@@ -10,7 +10,7 @@ const Index = () => {
         placeholder='Search agency name'
         style={styles.input}
       />
-      <SearchNormal color='#AEAAAE' />
+      {/* <SearchNormal color='#AEAAAE' /> */}
     </View>
   )
 }

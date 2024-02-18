@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Dimensions, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { Home3, Notification, Element3, Information, Location as LocationIcon, SearchNormal, CloseCircle } from 'iconsax-react-native'
+// import { Home3, Notification, Element3, Information, Location as LocationIcon, SearchNormal, CloseCircle } from 'iconsax-react-native'
 import * as opencage from "opencage-api-client"
+import {MaterialIcons, Ionicons} from '@expo/vector-icons'
 
 
 export default function SearchBar({onSearch=(place) => null}) {
@@ -54,7 +55,7 @@ export default function SearchBar({onSearch=(place) => null}) {
     return (
         <View style={styles.searchContainer}>
             <View style={styles.searchBar}>
-                <LocationIcon color='#AEAAAE' size={28} variant='Bold' />
+                <MaterialIcons name='location-on' color='#AEAAAE' size={28} />
                 <TextInput
                     style={styles.searchInput}
                     placeholder='Search here.....'
@@ -64,7 +65,7 @@ export default function SearchBar({onSearch=(place) => null}) {
                     onSubmitEditing={() => setIsActive(false)}
                 />
                 <TouchableOpacity onPress={() => setQuery('')}>
-                    <CloseCircle color='#AEAAAE' size={28} variant='Bold' />
+                    <Ionicons name='close-circle' color='#AEAAAE' size={28} />
                 </TouchableOpacity>
             </View>
             {query && isActive && <FlatList style={styles.searchDropdown}
