@@ -1,12 +1,14 @@
-import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import {MaterialIcons} from '@expo/vector-icons'
-
 
 const Index = ({navigation}) => {
   const goToSignup = () => {
     navigation.navigate('more')
-  }
+  };
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
       <View style={styles.container}>
         <View style={styles.moreContainer}>
@@ -46,16 +48,25 @@ const Index = ({navigation}) => {
           </View>
 
           <View>
-            <TouchableOpacity onPress={goToSignup}>
-            <View style={styles.linkContainer}>
-              <View style={styles.linkIconContainer}>
-                <MaterialIcons name='account-circle' color='#19686A' size={25} />
-              </View>
-              <View>
-                  <Text style={styles.linkText}>Sign Up</Text>
-              </View>
-            </View>
-            </TouchableOpacity>
+              {isLoggedIn ? 
+                <TouchableOpacity onPress={() => navigation.navigate('profile-screen')}>
+                  <View style={styles.linkContainer}>
+                    <Image source={require('../../assets/second-screen.png')} style={styles.user_avatar} />
+                    <Text style={styles.username}>Olawuwo Abeeb Akande</Text>
+                  </View>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity onPress={goToSignup}>
+                  <View style={styles.linkContainer}>
+                    <View style={styles.linkIconContainer}>
+                      <MaterialIcons name='account-circle' color='#19686A' size={25} />
+                    </View>
+                    <View>
+                      <Text style={styles.linkText}>Sign Up</Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+              }
           </View>
         </View>
       </View>
@@ -115,5 +126,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Prompt_400Regular',
     color: 'black',
+  },
+  user_avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 50
+  }, 
+  username: {
+    fontSize: 18,
+    fontFamily: 'Prompt_500Medium',
   }
 })

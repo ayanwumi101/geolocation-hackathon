@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { Dimensions, FlatList, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 // import { Home3, Notification, Element3, Information, Location as LocationIcon, SearchNormal, CloseCircle } from 'iconsax-react-native'
-import * as opencage from "opencage-api-client"
+// import * as opencage from "opencage-api-client"
 import {MaterialIcons, Ionicons} from '@expo/vector-icons'
 
 
@@ -11,39 +11,40 @@ export default function SearchBar({onSearch=(place) => null}) {
     const [error, setError] = useState('')
     const [places, setPlaces] = useState([])
     const [selectedPlace, setSelectedPlace] = useState(null)
-    useMemo(() => {
-        (
-            async () => {
-                setError('')
-                try {
-                    let data = await opencage.geocode({ q: query, key: "8dd1ab8470dc4b56881dd30e6afd1686" });
-                    if (data.status.code === 200) {
-                        if (data.results.length > 0) {
-                            // SUCCESS
-                            const place = data.results[0];
-                            console.log(place.formatted);
-                            console.log(place.geometry);
-                            console.log(place.annotations.timezone.name);
-                            setPlaces(data.results)
-                        } else {
-                            // ERROR
-                            console.log('total_results', data.total_results);
-                            setError('Invalid location')
-                        }
 
-                    } else {
-                        console.log('Status', data.status.message);
-                        // console.log('total_results', data.total_results);
-                        setError(data.status.message);
-                    }
-                } catch (error) {
-                    console.log("Error", error)
-                    setError(error)
-                }
+    // useMemo(() => {
+    //     (
+    //         async () => {
+    //             setError('')
+    //             try {
+    //                 let data = await opencage.geocode({ q: query, key: "8dd1ab8470dc4b56881dd30e6afd1686" });
+    //                 if (data.status.code === 200) {
+    //                     if (data.results.length > 0) {
+    //                         // SUCCESS
+    //                         const place = data.results[0];
+    //                         console.log(place.formatted);
+    //                         console.log(place.geometry);
+    //                         console.log(place.annotations.timezone.name);
+    //                         setPlaces(data.results)
+    //                     } else {
+    //                         // ERROR
+    //                         console.log('total_results', data.total_results);
+    //                         setError('Invalid location')
+    //                     }
 
-            }
-        )()
-    }, [query])
+    //                 } else {
+    //                     console.log('Status', data.status.message);
+    //                     // console.log('total_results', data.total_results);
+    //                     setError(data.status.message);
+    //                 }
+    //             } catch (error) {
+    //                 console.log("Error", error)
+    //                 setError(error)
+    //             }
+
+    //         }
+    //     )()
+    // }, [query])
 
     const handleSetSelectedPlace = (place) => {
         setSelectedPlace(place)

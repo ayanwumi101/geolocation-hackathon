@@ -10,6 +10,7 @@ import BottomSheet, { BottomSheetScrollView, BottomSheetModal, BottomSheetModalP
 import { MaterialIcons } from '@expo/vector-icons'
 import ContactDetails from '../contactDetails/index';
 
+
 // This data will come from backend
 const markersList = [
   {
@@ -160,6 +161,9 @@ const Index = ({ navigation }) => {
   const bottomSheetRef = useRef(null);
   const snapPoints = useMemo(() => ['25%', '50%', '65%'], []);
   const openBottomSheet = () => bottomSheetRef?.current?.expand();
+  // const openBottomSheet = useCallback(() => {
+  //   bottomSheetRef.current?.present();
+  // }, []);
   const closeBottomSheet = () => bottomSheetRef.current?.close();
 
   return (
@@ -187,7 +191,6 @@ const Index = ({ navigation }) => {
                       longitude: currentLocation?.longitude
                     }}
                     title={marker.type.title}
-                    description={marker.description}
                     image={markerImageTable[marker.type.title]}
                   />
                 )}
@@ -243,12 +246,13 @@ const Index = ({ navigation }) => {
         
 
         
-        {/* <BottomSheetModalProvider> */}
-          <BottomSheet
+        <BottomSheetModalProvider>
+          <BottomSheetModal
+            $modal= {true}
             ref={bottomSheetRef}
             index={-1}
             snapPoints={snapPoints}
-            enablePanDownToClose={true}
+            // enablePanDownToClose={true}
             backgroundStyle={{ borderRadius: 50, }}
           >
             <View>
@@ -256,8 +260,8 @@ const Index = ({ navigation }) => {
               <ContactDetails navigation={navigation} />
               {/* </BottomSheetScrollView> */}
             </View>
-          </BottomSheet>
-        {/* </BottomSheetModalProvider> */}
+          </BottomSheetModal>
+        </BottomSheetModalProvider>
       </View>
     </View>
   )

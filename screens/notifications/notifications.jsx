@@ -2,57 +2,9 @@ import React from 'react'
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native'
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { data } from '../../data'
+import { Notification } from '../../components/Notification'
 
 const Notifications = ({ navigation }) => {
-
-  const Notification = ({ item }) => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-            navigation.navigate('notification-info', {
-            screen: "notification-details",
-            params: { details: item }
-          })
-        }}>
-        <View style={styles.notificationContainer}>
-          <View style={styles.firstColumn}>
-            <View
-              style={[
-                styles.iconContainer,
-                {
-                  backgroundColor: item.label === 'feedback'
-                    ? '#ACE9EB' : item.label === 'fire' ? '#EED9C6'
-                      : item.label === 'accident' ? '#F9D8D6'
-                        : '#CFE6F2'
-                }
-              ]}
-            >
-              {
-                item.label === 'feedback' ?
-                  <MaterialIcons name='feedback' size={25} color='#19686A' />
-                  : item.label === 'fire' ?
-                    <MaterialIcons name='local-fire-department' color='#C77E3C' size={25} />
-                    : item.label === 'accident' ?
-                      <MaterialIcons name='taxi-alert' color='#C7443C' size={25} />
-                      :
-                      <MaterialCommunityIcons name='pistol' color='#3C95C7' size={25} />
-              }
-            </View>
-            <View style={styles.description}>
-              <Text style={styles.alertTitle}>{item.title}</Text>
-              <Text style={styles.alertDescription}>{item.title} incident report at crescent ...</Text>
-            </View>
-          </View>
-
-          <View>
-            <Text style={styles.time}>10:28</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    )
-  }
-
-
   return (
     <View style={styles.container}>
       <View style={styles.moreContainer}>
@@ -61,11 +13,9 @@ const Notifications = ({ navigation }) => {
       </View>
 
       <View style={styles.notificationsContainer}>
-        <FlatList
-          data={data}
-          renderItem={Notification}
-          keyExtractor={(item) => item.id}
-        />
+        <ScrollView>
+          {data.map((item, index) => <Notification item={item} navigation={navigation} key={index} />)}
+        </ScrollView>
       </View>
     </View>
   )
@@ -77,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 48,
-    paddingBottom: 75,
+    paddingBottom: 55,
     backgroundColor: 'white',
   },
   text: {

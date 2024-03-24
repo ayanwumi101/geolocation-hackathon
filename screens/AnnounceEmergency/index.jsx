@@ -1,17 +1,29 @@
 import React, {useState, useEffect} from 'react'
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image} from 'react-native'
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image, ActivityIndicator} from 'react-native'
 import {Picker} from '@react-native-picker/picker'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as ImagePicker from 'expo-image-picker'
 import {MaterialIcons} from '@expo/vector-icons'
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getStorage, ref } from 'firebase/storage';
+
 
 
 const Index = () => {
-  const [emergencyType, setEmergencyType] = useState();
-    const [date, setDate] = useState(new Date(1598051730000));
+
+    const [emergencyType, setEmergencyType] = useState('');
+    const [emergencyLocation, setEmergencyLocation] = useState('');
+    const [emergencyDescription, setEmergencyDescription] = useState('');
+    const [date, setDate] = useState(new Date());
     const [mode, setMode] = useState('time');
     const [show, setShow] = useState(false);
     const [image, setImage] = useState(null);
+    const [loading, setLoading] = useState(false)
+    const db = getFirestore();
+    const colRef = collection(db, 'emergencies');
+    const storage = getStorage();
+    const storageRef = ref(storage, 'Emergencies')
+
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate;
@@ -29,7 +41,6 @@ const Index = () => {
     };
 
     const pickImage = async () => {
-        // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             aspect: [4, 3],
@@ -46,6 +57,19 @@ const Index = () => {
         const minutes = date.getMinutes().toString().padStart(2, '0');
         return `${hours}:${minutes}`;
     };
+
+
+    const sendAlert = async () => {
+        if(date && emergencyDescription && emergencyLocation && emergencyType && image){
+            try {
+                
+            } catch (error) {
+                
+            }
+        }else{
+            alert('Please fill all fields')
+        }
+    }
 
   return (
     <ScrollView>
@@ -77,6 +101,8 @@ const Index = () => {
                       placeholder='Type here'
                       style={styles.input}
                       selectionColor='black'
+                      value={emergencyLocation}
+                      onChangeText={(val) => setEmergencyLocation(val)}
                   />
             </View>
             <View style={styles.form_control}>
@@ -108,6 +134,8 @@ const Index = () => {
                       selectionColor='black'
                       multiline={true}
                       numberOfLines={7}
+                      value={emergencyDescription}
+                      onChangeText={(val) => setEmergencyDescription(val)}
                   />
             </View>
             <View style={styles.form_control}>
@@ -127,7 +155,7 @@ const Index = () => {
                       </TouchableOpacity>
                   </View>
             </View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={sendAlert}>
                 <View style={styles.btn_container}>
                     <Text style={styles.btn_text}>SEND ALERT</Text>
                 </View>
